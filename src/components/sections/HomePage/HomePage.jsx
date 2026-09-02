@@ -1,0 +1,110 @@
+import React from 'react';
+import ImgPortonHome from '../../../assets/images/ImgPortonHome.jpg'
+import Logo from '../../../assets/images/Logo.png'
+export default function HomePage() {
+    return (
+        <section id="inicio" className="relative min-h-screen bg-[#0b0602] text-[#f1ece3] flex items-center pt-24 pb-12 overflow-hidden">
+
+            {/* 1. CAPA DE FONDO E IMAGEN CON OVERLAY */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src={ImgPortonHome}
+                    alt="Herrería de rejas artesanales"
+                    className="w-full h-full object-cover opacity-45 filter blur-none"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0b0602] via-[#0b0602]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0602] via-transparent to-[#0b0602]/40" />
+            </div>
+
+            {/* 2. CONTENEDOR PRINCIPAL */}
+            <div className="relative z-10 container mx-auto px-6 lg:px-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                    {/* COLUMNA IZQUIERDA: MENSAJE PRINCIPAL (8 columnas) */}
+                    <div className="lg:col-span-8 space-y-6">
+
+                        {/* Badge / Insignia superior */}
+                        <div className="inline-flex items-center gap-3">
+                            <div className="w-20 h-20 rounded-full bg-[#191613] border border-[#e95918]/40 flex items-center justify-center shadow-inner">
+                                <img
+                                    src={Logo}
+                                    alt="Velfer"
+                                    className="w-30 h-30 object-contain"
+                                />
+                            </div>
+                            <span className="font-display text-xs md:text-sm font-semibold tracking-[0.25em] text-[#e7a56b] uppercase">
+                                Somos la segunda Generación de Herreros.
+                            </span>
+                        </div>
+
+                        {/* Encabezado H1 Principal */}
+                        <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl font-bold uppercase leading-[0.9] tracking-tight">
+                            Herrería <br />
+                            <span className="text-[#e95918]">de Precisión</span>
+                        </h1>
+
+                        {/* Párrafo Descriptivo */}
+                        <p className="font-body text-[#95918c] text-base md:text-lg max-w-xl leading-relaxed">
+                            Fabricamos ventanales, puertas, rejas y estructuras metálicas a medida.
+                            Trabajo artesanal con materiales de primera, entregado a tiempo y con garantía.
+                        </p>
+
+                        {/* Botones de Acción (CTAs) */}
+                        <div className="flex flex-wrap items-center gap-4 pt-2">
+                            <a
+                                href="#contacto"
+                                className="bg-[#e95918] hover:bg-[#d04b0f] text-[#0b0602] font-display font-semibold text-sm tracking-wider uppercase px-8 py-4 transition-colors duration-200"
+                            >
+                                Solicitar Cotización
+                            </a>
+                            <a
+                                href="#galeria"
+                                className="bg-[#191613] hover:bg-[#231f1c] border border-[#95918c]/30 text-[#f1ece3] font-display font-semibold text-sm tracking-wider uppercase px-8 py-4 transition-colors duration-200"
+                            >
+                                Ver Trabajos
+                            </a>
+                        </div>
+
+                    </div>
+
+                    {/* COLUMNA DERECHA: ESTADÍSTICAS (4 columnas) */}
+                    <div className="lg:col-span-4 flex flex-row lg:flex-col justify-between lg:justify-center gap-8 lg:space-y-8 lg:border-l lg:border-[#95918c]/20 lg:pl-12">
+
+                        {/* Métrica 1 */}
+                        <div>
+                            <div className="font-display text-4xl lg:text-5xl font-bold text-[#e95918] tracking-tight">
+                                500+
+                            </div>
+                            <div className="font-display text-xs text-[#95918c] tracking-widest uppercase mt-1">
+                                Proyectos
+                            </div>
+                        </div>
+
+                        {/* Métrica 2 */}
+                        <div>
+                            <div className="font-display text-4xl lg:text-5xl font-bold text-[#e95918] tracking-tight">
+                                20+
+                            </div>
+                            <div className="font-display text-xs text-[#95918c] tracking-widest uppercase mt-1">
+                                Años
+                            </div>
+                        </div>
+
+                        {/* Métrica 3 */}
+                        <div>
+                            <div className="font-display text-4xl lg:text-5xl font-bold text-[#e95918] tracking-tight">
+                                100%
+                            </div>
+                            <div className="font-display text-xs text-[#95918c] tracking-widest uppercase mt-1">
+                                Garantía
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    );
+}
