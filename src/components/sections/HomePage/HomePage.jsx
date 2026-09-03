@@ -25,7 +25,7 @@ export default function HomePage() {
                     <div className="lg:col-span-8 space-y-6">
 
                         {/* Badge / Insignia superior con el Logo */}
-                        <div className="inline-flex items-center gap-3">
+                       {/*  <div className="inline-flex items-center gap-3">
                             <div className="w-20 h-20 rounded-full bg-[#191613] border border-[#e95918]/40 flex items-center justify-center p-1.5 shadow-inner">
                                 <img
                                     src={Logo2}
@@ -36,7 +36,7 @@ export default function HomePage() {
                             <span className="font-display text-xs md:text-sm font-semibold tracking-[0.25em] text-[#e7a56b] uppercase">
                                 Más de 20 años de experiencia
                             </span>
-                        </div>
+                        </div> */}
 
                         {/* Encabezado H1 Principal */}
                         <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl font-bold uppercase leading-[0.9] tracking-tight">
