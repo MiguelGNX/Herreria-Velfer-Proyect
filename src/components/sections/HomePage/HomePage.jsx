@@ -1,6 +1,7 @@
 import React from 'react';
 import ImgPortonHome from '../../../assets/images/ImgPortonHome.jpg';
-import Logo from '../../../assets/images/Logo.png';
+//import Logo from '../../../assets/images/Logo.png';
+import Logo2 from  '../../../assets/images/Logo2.png';
 
 export default function HomePage() {
     return (
@@ -27,7 +28,7 @@ export default function HomePage() {
                         <div className="inline-flex items-center gap-3">
                             <div className="w-20 h-20 rounded-full bg-[#191613] border border-[#e95918]/40 flex items-center justify-center p-1.5 shadow-inner">
                                 <img
-                                    src={Logo}
+                                    src={Logo2}
                                     alt="Velfer Logo"
                                     className="w-full h-full object-contain"
                                 />

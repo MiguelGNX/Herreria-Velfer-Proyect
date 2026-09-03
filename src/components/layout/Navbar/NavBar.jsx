@@ -1,6 +1,6 @@
 import React from 'react';
-import Logo from '../../../assets/images/Logo.png';
-
+//import Logo from '../../../assets/images/Logo.png';
+import Logo2 from  '../../../assets/images/Logo2.png';
 export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#0b0602]/90 backdrop-blur-md border-b border-[#95918c]/20">
@@ -9,7 +9,7 @@ export default function Navbar() {
         {/* LOGO Y MARCA */}
         <a href="#inicio" className="flex items-center gap-3 group">
           <img 
-            src={Logo} 
+            src={Logo2} 
             alt="Herrería Velfer Logo" 
             className="w-12 h-12 object-contain"
           />
