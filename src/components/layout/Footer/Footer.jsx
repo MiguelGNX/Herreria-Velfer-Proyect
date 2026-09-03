@@ -43,7 +43,7 @@ export default function Footer() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/5210000000000" 
+                href="https://wa.me/523511152066?text=Hola%20Desde%20Web%20Velfer,%20Me%20gustar%C3%ADa%20solicitar%20cotizaci%C3%B3n%20" 
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

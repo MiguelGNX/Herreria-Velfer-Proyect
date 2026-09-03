@@ -35,12 +35,12 @@ export default function Navbar() {
           <a href="#nosotros" className="hover:text-[#f1ece3] transition-colors duration-200">
             Nosotros
           </a>
-          <a 
+          {/* <a 
             href="#contacto" 
             className="border border-[#e95918]/60 text-[#e95918] px-4 py-2 hover:bg-[#e95918] hover:text-[#0b0602] transition-all duration-200"
           >
             Contacto
-          </a>
+          </a> */}
         </div>
 
         {/* BOTÓN HAMBURGUESA / CERRAR */}
