@@ -1,7 +1,7 @@
 import React from 'react';
 //import Logo from '../../../assets/images/Logo.png';
 import Logo2 from  '../../../assets/images/Logo2.png';
-export default function Navbar() {
+export default function NavBar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#0b0602]/90 backdrop-blur-md border-b border-[#95918c]/20">
       <div className="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
