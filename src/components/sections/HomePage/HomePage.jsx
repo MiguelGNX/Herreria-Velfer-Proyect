@@ -1,7 +1,7 @@
 import React from 'react';
 import ImgPortonHome from '../../../assets/images/ImgPortonHome.jpg';
 //import Logo from '../../../assets/images/Logo.png';
-import Logo2 from '../../../assets/images/Logo2.png';
+//import Logo2 from '../../../assets/images/Logo2.png';
 
 export default function HomePage() {
     return (
