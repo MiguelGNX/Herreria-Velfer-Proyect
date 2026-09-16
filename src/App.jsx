@@ -6,6 +6,7 @@ import ServicesSection from './components/sections/NuestrosServicios/ServicesSec
 import GallerySection from './components/sections/GaleriaTrabajo/GallerySection';
 import AboutUsSection from './components/sections/SobreNosotros/AboutSection';
 import Footer from './components/layout/Footer/Footer';
+import UserFormulario from './components/sections/Formulario/UserFormulario';
 function App() {
   return (
     <div className="bg-[#0b0602] min-h-screen">
@@ -14,6 +15,7 @@ function App() {
       <ServicesSection />
       <GallerySection />
       <AboutUsSection />
+      <UserFormulario />
       <Footer />
     </div>
   );
