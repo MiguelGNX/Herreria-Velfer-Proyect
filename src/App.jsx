@@ -6,9 +6,12 @@ import ServicesSection from './components/sections/NuestrosServicios/ServicesSec
 import GallerySection from './components/sections/GaleriaTrabajo/GallerySection';
 import AboutUsSection from './components/sections/SobreNosotros/AboutSection';
 import Footer from './components/layout/Footer/Footer';
+import useDarkMode from '../src/hooks/DarkMode/useDarkMode';
 function App() {
+  useDarkMode();
   return (
-    <div className="bg-[#0b0602] min-h-screen">
+    <div className="bg-[#f1ece3] text-[#0b0602] dark:bg-[#0b0602] dark:text-[#f1ece3] min-h-screen transition-colors duration-300">
+      
       <Navbar2 />
       <HomePage />
       <ServicesSection />
