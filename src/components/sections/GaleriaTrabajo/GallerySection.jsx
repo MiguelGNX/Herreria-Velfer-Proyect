@@ -1,40 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { client, urlFor } from '../../../sanity/client';
 
-// Datos de ejemplo para los proyectos
-const projects = [
-  {
-    id: 1,
-    title: 'Reja de ventana',
-    location: 'Col. Narvarte',
-    beforeImg: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
-    afterImg: 'https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 2,
-    title: 'Puerta de acceso',
-    location: 'Tlalpan',
-    beforeImg: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
-    afterImg: 'https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 3,
-    title: 'Ventanal de herrería',
-    location: 'Coyoacán',
-    beforeImg: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
-    afterImg: 'https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 4,
-    title: 'Portón principal',
-    location: 'Pedregal',
-    beforeImg: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
-    afterImg: 'https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?auto=format&fit=crop&w=800&q=80',
-  },
-];
-
-// Subcomponente individual para manejar el estado de cada tarjeta
+// Subcomponente individual para manejar el estado y visualización de cada tarjeta
 function GalleryCard({ project }) {
   const [showAfter, setShowAfter] = useState(false);
+
+  // Conversión de las imágenes almacenadas en Sanity a URLs de alta calidad
+  const beforeUrl = project.beforeImg ? urlFor(project.beforeImg).url() : '';
+  const afterUrl = project.afterImg ? urlFor(project.afterImg).url() : '';
 
   return (
     <div className="bg-[#e8e2d8] dark:bg-[#0b0602] border border-[#0b0602]/10 dark:border-[#95918c]/20 flex flex-col overflow-hidden transition-colors duration-300">
@@ -50,36 +23,73 @@ function GalleryCard({ project }) {
         </div>
 
         {/* Imagen ANTES */}
-        <img
-          src={project.beforeImg}
-          alt={`${project.title} - Antes`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
-            showAfter ? 'opacity-0' : 'opacity-100'
-          }`}
-        />
+        {beforeUrl && (
+          <img
+            src={beforeUrl}
+            alt={`${project.title} - Antes`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+              showAfter ? 'opacity-0' : 'opacity-100'
+            }`}
+          />
+        )}
 
         {/* Imagen DESPUÉS */}
-        <img
-          src={project.afterImg}
-          alt={`${project.title} - Después`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
-            showAfter ? 'opacity-100' : 'opacity-0'
-          }`}
-        />
+        {afterUrl && (
+          <img
+            src={afterUrl}
+            alt={`${project.title} - Después`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+              showAfter ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        )}
       </div>
 
-      {/* Pie de la Tarjeta */}
-      <div className="p-4 flex items-center justify-between border-t border-[#0b0602]/10 dark:border-[#95918c]/20 bg-[#f1ece3] dark:bg-[#0b0602] transition-colors duration-300">
-        <p className="text-xs md:text-sm text-[#55504a] dark:text-[#95918c]">
-          <span className="text-[#0b0602] dark:text-[#f1ece3] font-semibold">{project.title}</span> — {project.location}
-        </p>
+      {/* Pie de la Tarjeta con Título, Botón y Detalles Técnicos */}
+      <div className="p-5 flex flex-col gap-4 border-t border-[#0b0602]/10 dark:border-[#95918c]/20 bg-[#f1ece3] dark:bg-[#0b0602] transition-colors duration-300">
+        
+        {/* Cabecera de la tarjeta */}
+        <div className="flex items-center justify-between">
+          <h3 className="text-base font-bold text-[#0b0602] dark:text-[#f1ece3] uppercase tracking-wide">
+            {project.title}
+          </h3>
 
-        <button
-          onClick={() => setShowAfter(!showAfter)}
-          className="text-[11px] font-bold tracking-wider text-[#e95918] hover:bg-[#e95918] hover:text-[#f1ece3] dark:hover:text-[#0b0602] border border-[#e95918]/60 px-3 py-1.5 uppercase transition-all duration-200 whitespace-nowrap ml-2 cursor-pointer"
-        >
-          {showAfter ? 'VER ANTES' : 'VER DESPUÉS'}
-        </button>
+          <button
+            onClick={() => setShowAfter(!showAfter)}
+            className="text-[11px] font-bold tracking-wider text-[#e95918] hover:bg-[#e95918] hover:text-[#f1ece3] dark:hover:text-[#0b0602] border border-[#e95918]/60 px-3 py-1.5 uppercase transition-all duration-200 whitespace-nowrap cursor-pointer"
+          >
+            {showAfter ? 'VER ANTES' : 'VER DESPUÉS'}
+          </button>
+        </div>
+
+        {/* Grilla de Especificaciones Técnicas */}
+        <div className="grid grid-cols-2 gap-2 text-xs pt-3 border-t border-[#0b0602]/10 dark:border-[#95918c]/10 text-[#55504a] dark:text-[#95918c]">
+          {project.materials && (
+            <div>
+              <span className="font-semibold text-[#0b0602] dark:text-[#f1ece3] block">Material:</span>
+              {project.materials}
+            </div>
+          )}
+          {project.paint && (
+            <div>
+              <span className="font-semibold text-[#0b0602] dark:text-[#f1ece3] block">Pintura:</span>
+              {project.paint}
+            </div>
+          )}
+          {project.dimensions && (
+            <div>
+              <span className="font-semibold text-[#0b0602] dark:text-[#f1ece3] block">Medidas:</span>
+              {project.dimensions}
+            </div>
+          )}
+          {project.installationTime && (
+            <div>
+              <span className="font-semibold text-[#0b0602] dark:text-[#f1ece3] block">Instalación:</span>
+              {project.installationTime}
+            </div>
+          )}
+        </div>
+
       </div>
 
     </div>
@@ -87,6 +97,34 @@ function GalleryCard({ project }) {
 }
 
 export default function GallerySection() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Consulta a Sanity solicitando los proyectos publicados
+    const query = `*[_type == "project"]{
+      _id,
+      title,
+      materials,
+      paint,
+      dimensions,
+      installationTime,
+      beforeImg,
+      afterImg
+    }`;
+
+    client
+      .fetch(query)
+      .then((data) => {
+        setProjects(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error al cargar proyectos desde Sanity:', error);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <section 
       id="galeria" 
@@ -107,12 +145,22 @@ export default function GallerySection() {
           </p>
         </div>
 
-        {/* REJILLA DE PROYECTOS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <GalleryCard key={project.id} project={project} />
-          ))}
-        </div>
+        {/* CONTENIDO DINÁMICO */}
+        {loading ? (
+          <div className="text-center py-12 text-[#55504a] dark:text-[#95918c]">
+            Cargando proyectos de la galería...
+          </div>
+        ) : projects.length === 0 ? (
+          <div className="text-center py-12 text-[#55504a] dark:text-[#95918c]">
+            No hay proyectos publicados aún.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {projects.map((project) => (
+              <GalleryCard key={project._id} project={project} />
+            ))}
+          </div>
+        )}
 
       </div>
     </section>
